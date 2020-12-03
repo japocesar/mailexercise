@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests in <HomeScreen /> should display the component 1`] = `
+<Fragment>
+  <h1>
+    all
+  </h1>
+  <ul
+    className="list-group mb-5"
+  >
+    <li>
+      <h3
+        className="text-danger text-center"
+      >
+        Not found emails for "
+        "
+      </h3>
+    </li>
+  </ul>
+</Fragment>
+`;
