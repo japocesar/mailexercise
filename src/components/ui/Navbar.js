@@ -41,7 +41,7 @@ export const Navbar = ({handleQuery, query, setQuery}) => {
 
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul className="navbar-nav ml-auto">
-                    <span className="nav-item nav-link text-info"> Hola</span>
+                    <span className="nav-item nav-link text-info"> </span>
                 </ul>
             </div>
         </nav>
