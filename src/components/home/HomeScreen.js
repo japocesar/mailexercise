@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faExclamation } from "@fortawesome/free-solid-svg-icons";
 
-import './home.css';
+import { getMails } from '../../selectors/getMails';
 
-export const HomeScreen = ({tag, mails}) => {
+import './home.css';
+import { getMailsByQuery } from '../../selectors/getMailsByQuery';
+
+export const HomeScreen = ({selectedTag, query}) => {
+
+    const [mails, setMails] = useState([]);
 
     const handleSelect = (event) => {
         const el = event.currentTarget;
@@ -14,9 +19,24 @@ export const HomeScreen = ({tag, mails}) => {
             : document.querySelector(`[data-id="${id}"]`).classList.remove('active')
     }
 
+    useEffect(() => {
+        const mailsList = getMails(selectedTag);
+        setMails( mailsList );
+    }, [selectedTag]);
+
+    useEffect(() => {
+        let mailsList = [];
+        if( query !== '' ) {
+            mailsList = getMailsByQuery(query, mails);
+        } else {
+            mailsList = getMails(selectedTag);
+        }
+        setMails( mailsList );
+    }, [query]);
+
     return (
         <>
-          <h1>{tag}</h1>
+          <h1>{selectedTag}</h1>
 
           <ul className="list-group mb-5">
             { mails.map( mail => 

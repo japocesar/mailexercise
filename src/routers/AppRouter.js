@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 import {
     BrowserRouter as Router,
   Route,
@@ -8,27 +8,11 @@ import { HomeScreen } from '../components/home/HomeScreen';
 import { Menu } from '../components/ui/Menu';
 import { Navbar } from '../components/ui/Navbar';
 
-import { getMails } from '../selectors/getMails';
 
-
-export const AppRouter = () => {
-
-  const [selectedTag, setSelectedTag] = useState('all');
-  const [mails, setMails] = useState([]);
-  const changeTag = useCallback(
-    ( newTag ) => {
-      setSelectedTag(newTag);
-    }, []
-  )
-
-  useEffect(() => {
-    const mailsList = getMails(selectedTag);
-    setMails( mailsList );
-  }, [selectedTag])
-
+export const AppRouter = ( { selectedTag, changeTag, handleQuery, query, setQuery } ) => {
     return (
         <Router>
-          <Navbar />
+          <Navbar query={query} handleQuery={handleQuery} setQuery={setQuery}/>
           <div className="d-flex flex-wrap mt-5">
             <div  className="col-12 col-md-2">
               <Menu tag={selectedTag} changeTag={changeTag} />
@@ -37,7 +21,7 @@ export const AppRouter = () => {
             <div className="col-12 col-md-10">
               <Switch>
                 <Route path="/">
-                  <HomeScreen tag={selectedTag} mails={mails} />
+                  <HomeScreen selectedTag={selectedTag} query={query} />
                 </Route>
               </Switch>
             </div>
