@@ -26,11 +26,11 @@ export const HomeScreen = ({selectedTag, query}) => {
 
     useEffect(() => {
         let mailsList = [];
-        if( query !== '' ) {
-            mailsList = getMailsByQuery(query, mails);
-        } else {
-            mailsList = getMails(selectedTag);
-        }
+        // if( query !== '' ) {
+        //     mailsList = getMailsByQuery(query, mails);
+        // } else {
+            mailsList = getMails(selectedTag, query);
+        // }
         setMails( mailsList );
     }, [query]);
 

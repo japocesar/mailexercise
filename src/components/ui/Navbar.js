@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 export const Navbar = ({handleQuery, query, setQuery}) => {
 
-    // const [ inputValue, setInputValue ] = useState('');
-
     const handleInputChange = (e) => {
         // setInputValue(e.target.value);
-        setQuery(e.target.value)
-        if( e.target.value === '' ) handleQuery();
+        setQuery(e.target.value);
+        // if( e.target.value === '' ) handleQuery();
     };
 
     const handleSubmit = (e) => {
