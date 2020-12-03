@@ -30,6 +30,11 @@ svg {
     color: lightgrey;
 }
 
+.container svg {
+    margin-right: 15px;
+    color: darkgray;
+}
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .subject {

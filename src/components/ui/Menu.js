@@ -10,7 +10,7 @@ export const Menu = ( { tag, changeTag } ) => {
         <ul className="nav flex-column">
             <li className={`nav-item ${(tag === 'all') && 'active'}`}
                 onClick={ () => changeTag('all') }>
-                <span>Recibidos</span>
+                <span>Inbox</span>
             </li>
             { tags.map( item => (
                 <li key={item} className={`nav-item ${(tag === item) && 'active'}`}

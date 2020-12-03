@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faExclamation } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faExclamation, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { getMails } from '../../selectors/getMails';
 
@@ -9,29 +9,51 @@ import './home.css';
 export const HomeScreen = ({selectedTag, query}) => {
 
     const [mails, setMails] = useState([]);
+    const [selectedItems, setSelectedItems] = useState([]);
 
     const handleSelect = (event) => {
         const el = event.currentTarget;
         const id = el.dataset.id;
-        ( el.checked )
-            ? document.querySelector(`[data-id="${id}"]`).classList.add('active')
-            : document.querySelector(`[data-id="${id}"]`).classList.remove('active')
+
+        if ( el.checked ) {
+            document.querySelector(`[data-id="${id}"]`).classList.add('active')
+            setSelectedItems([...selectedItems, mails[id-1]]);
+        } else {
+            const mailsList = [...selectedItems];
+            const mail = mailsList.find(item => item.id ===  id);
+            const indexMail = mailsList.indexOf(mail);
+            mailsList.splice(indexMail, 1);
+            setSelectedItems(mailsList);
+            document.querySelector(`[data-id="${id}"]`).classList.remove('active')
+        }
     }
 
+    // useEffect(() => {
+    //     const mailsList = getMails(selectedTag);
+    //     setMails( mailsList );
+    // }, [selectedTag]);
+
     useEffect(() => {
-        const mailsList = getMails(selectedTag);
-        setMails( mailsList );
-    }, [selectedTag]);
+        console.log(selectedItems.length)
+    }, [selectedItems]);
 
     useEffect(() => {
         let mailsList = [];
             mailsList = getMails(selectedTag, query);
         setMails( mailsList );
-    }, [query]);
+    }, [query, selectedTag]);
 
     return (
         <>
           <h1>{selectedTag}</h1>
+          {
+            ( selectedItems.length > 0 ) &&
+            <div className="container">
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faExclamation} />
+                <FontAwesomeIcon icon={faTrash} />
+            </div>
+          }          
 
           <ul className="list-group mb-5">
             { (!mails.length) &&
