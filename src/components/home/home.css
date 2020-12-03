@@ -22,6 +22,7 @@ li {
 
 .email-content {
     overflow: hidden;
+    padding-top: 5px;
 }
 
 svg {
@@ -39,10 +40,20 @@ svg {
     }
 
     li {
-        max-height: 4.5em;
+        max-height: 5.5em;
     }
 
-    .date-container, .icons-container {
+    .date-container, .icons-container svg {
+        display: none;
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    li {
+        max-height: 4.5em;
+    }
+    .date-container, .icons-container svg {
         display: none;
     }
 }

@@ -22,17 +22,18 @@ export const HomeScreen = ({tag, mails}) => {
             { mails.map( mail => 
             (
     
-                <li key={ mail.id } data-id={ mail.id } className="list-group-item d-flex">
-                    <div className="mr-2 col">
+                <li key={ mail.id } data-id={ mail.id } className="list-group-item d-flex flex-wrap">
+                    <div className="col-1 p-0">
                         <input onClick={ handleSelect } type="checkbox" data-id={ mail.id } aria-label="Checkbox for following text input"></input>
                     </div>
-                    <div className="col icons-container p-0">
+                    <div className="icons-container p-0 col-11 col-lg-2 d-flex">
                         <FontAwesomeIcon icon={faStar} />
                         <FontAwesomeIcon icon={faExclamation} />
+                        <span>{ mail.sender }</span>
                     </div>
-                    <div className="col-9 p-0 email-body d-flex flex-wrap">
-                        <span className="subject content col-xs-12 col-md-auto"> { mail.subject } -</span>
-                        <div className="col email-content" dangerouslySetInnerHTML={{ __html: mail.body }}></div>
+                    <div className="col-12 col-lg-8 p-0 pl-3 email-body d-flex flex-wrap">
+                        <span className="subject content col-xs-12 col-md-auto pr-0"> { mail.subject } -</span>
+                        <div className="col email-content pl-1" dangerouslySetInnerHTML={{ __html: mail.body }}></div>
                     </div>
                     <div className="p-0 text-right date-container"> { new Date(mail.date).toLocaleDateString() } </div>
                 </li>
