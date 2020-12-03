@@ -25,11 +25,7 @@ export const HomeScreen = ({selectedTag, query}) => {
 
     useEffect(() => {
         let mailsList = [];
-        // if( query !== '' ) {
-        //     mailsList = getMailsByQuery(query, mails);
-        // } else {
             mailsList = getMails(selectedTag, query);
-        // }
         setMails( mailsList );
     }, [query]);
 
@@ -38,9 +34,14 @@ export const HomeScreen = ({selectedTag, query}) => {
           <h1>{selectedTag}</h1>
 
           <ul className="list-group mb-5">
+            { (!mails.length) &&
+            <li>
+                <h3 className="text-danger text-center">Not found emails for "{ query }"</h3>
+            </li>
+            }
+            
             { mails.map( mail => 
             (
-    
                 <li key={ mail.id } data-id={ mail.id } className="list-group-item d-flex flex-wrap">
                     <div className="col-1 p-0">
                         <input onClick={ handleSelect } type="checkbox" data-id={ mail.id } aria-label="Checkbox for following text input"></input>
