@@ -5,7 +5,6 @@ import { faStar, faExclamation } from "@fortawesome/free-solid-svg-icons";
 import { getMails } from '../../selectors/getMails';
 
 import './home.css';
-import { getMailsByQuery } from '../../selectors/getMailsByQuery';
 
 export const HomeScreen = ({selectedTag, query}) => {
 
