@@ -1,0 +1,11 @@
+.active {
+    font-weight: bold;
+}
+
+li {
+    cursor: pointer;
+}
+
+.flex-column li:hover {
+    background-color: lightgrey;
+}

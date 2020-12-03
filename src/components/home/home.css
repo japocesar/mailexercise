@@ -1,0 +1,48 @@
+h1 {
+    text-transform: capitalize;
+}
+
+li {
+    max-height: 2.5em;
+    overflow: hidden;
+}
+
+
+.subject {
+    width: fit-content;
+    font-weight: bold;
+}
+
+.email-body p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: -5px;
+}
+
+.email-content {
+    overflow: hidden;
+}
+
+svg {
+    margin-right: 5px;
+    color: lightgrey;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .subject {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    li {
+        max-height: 4.5em;
+    }
+
+    .date-container, .icons-container {
+        display: none;
+    }
+}
